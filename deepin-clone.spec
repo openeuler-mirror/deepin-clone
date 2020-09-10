@@ -39,7 +39,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
 %{_datadir}/mime/packages/%{name}.xml
-%{_polkit_qt_policydir}/com.deepin.pkexec.%{name}.policy
+%{_datadir}/polkit-1/actions//com.deepin.pkexec.%{name}.policy
 
 %changelog
 * Thu Sep 10 2020 chenbo pan <panchenbo@uniontech.com> - 5.0.3-1
