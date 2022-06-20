@@ -1,0 +1,21 @@
+Author: misaka00251 <misaka00251@misakanet.cn>
+Date:   Mon Jun 13 11:54:18 2022 +0800
+
+	Fix error: '#pragma' is not allowed here.
+	It seems upstream has fixed this issue, so backport that as well for safety.
+
+diff --git a/app/src/fixboot/bootdoctor.cpp b/app/src/fixboot/bootdoctor.cpp
+index 07b7a39..1f24067 100644
+--- a/app/src/fixboot/bootdoctor.cpp
++++ b/app/src/fixboot/bootdoctor.cpp
+@@ -103,8 +103,9 @@ bool BootDoctor::fix(const QString &partDevice)
+                                  "ppc64"
+                      #elif defined(HOST_ARCH_ppc64le)
+                                  "ppc64le"
++                     #elif defined(HOST_ARCH_riscv64)
++                                 "riscv64"
+                      #else
+-                     #pragma message "Machine: " HOST_ARCH
+                                 "unknow"
+                      #endif
+                                  ), file_boot_fix.fileName())) {
