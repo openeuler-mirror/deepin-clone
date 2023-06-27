@@ -1,11 +1,12 @@
 Name:           deepin-clone
 Version:        5.0.3
-Release:        2
+Release:        3
 Summary:        Disk and partition backup/restore tool
 License:        GPLv3
 URL:            https://github.com/linuxdeepin/deepin-clone
 Source0:        https://github.com/linuxdeepin/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         modify-QPainterPath-error.patch
+Patch1:         fix-clang.patch
 
 BuildRequires:  gcc-c++ desktop-file-utils qt5-linguist qt5-qtbase-private-devel
 BuildRequires:  dtkwidget2-devel dtkcore2-devel deepin-gettext-tools dtkcore2 dtkwidget2 
@@ -45,6 +46,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop ||:
 %{_datadir}/polkit-1/actions//com.deepin.pkexec.%{name}.policy
 
 %changelog
+* Tue Jun 27 2023 yoo <sunyuechi@iscas.ac.cn> - 5.0.3-3
+- fix clang build error
+
 * Thu Feb 10 2022 liweigang <liweiganga@uniontech.com> - 5.0.3-2
 - fix build error
 
