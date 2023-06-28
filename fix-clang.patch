@@ -1,0 +1,31 @@
+diff -u -r deepin-clone-5.0.3/app/src/corelib/dvirtualimagefileio.cpp deepin-clone-5.0.3/app/src/corelib/dvirtualimagefileio.cpp
+--- deepin-clone-5.0.3/app/src/corelib/dvirtualimagefileio.cpp	2020-03-27 00:05:17.000000000 +0800
++++ deepin-clone-5.0.3/app/src/corelib/dvirtualimagefileio.cpp	2023-06-27 13:54:46.000000000 +0800
+@@ -447,9 +447,9 @@
+     d->file.write(file_name);
+ 
+     if (file_name.size() < FILE_NAME_LENGTH) {
+-        char empty_ch[FILE_NAME_LENGTH - file_name.size()] = {0};
++        std::vector<char> empty_ch(FILE_NAME_LENGTH - file_name.size(), 0);
+ 
+-        d->file.write(empty_ch, FILE_NAME_LENGTH - file_name.size());
++        d->file.write(empty_ch.data(), FILE_NAME_LENGTH - file_name.size());
+     }
+ 
+     d->file.seek(pos);
+@@ -544,11 +544,11 @@
+ 
+     d->file.write(file_name);
+ 
+-    if (file_name.size() < FILE_NAME_LENGTH) {
+-        char empty_ch[FILE_NAME_LENGTH - file_name.size()] = {0};
++		if (file_name.size() < FILE_NAME_LENGTH) {
++				std::vector<char> empty_ch(FILE_NAME_LENGTH - file_name.size(), 0);
+ 
+-        d->file.write(empty_ch, FILE_NAME_LENGTH - file_name.size());
+-    }
++				d->file.write(empty_ch.data(), FILE_NAME_LENGTH - file_name.size());
++		}
+ 
+     DVirtualImageFileIOPrivate::FileInfo info;
+ 
